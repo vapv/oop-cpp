@@ -1,34 +1,32 @@
 #include <iostream>
-#include "s2/Mobile.h"
-#include "s2/FileReader.h"
+#include "s3/Person.h"
+#include "s3/PersonMem.h"
+#include "s3/Singleton.h"
+
+void log(PersonMem p) {
+    cout << "PersonMem logger : " << p.getAge() << endl;
+}
 
 int main() {
-    // создаем объект класса
-    FileReader fileReader("C://<путь до файла>");
-    // открываем файл
-    fileReader.open();
 
-    // построчное считывание, пока не достигли конца файла
-    while (fileReader.hasNext()) {
-        string str = fileReader.next();
-        /**
-         * TODO: далее должна быть бизнес логика :
-         *  1. распарсить строку на лексемы (Parser)
-         *  2. обработать каждую лексему в статистике (StatisticStorage)
-         *  3. записать строчки в CSV файл (CSVFileWriter)
-         */
+    Person p1(10, "John");
+    Person p2(10, "John");
+    cout << p1.compare(p2) << endl;
 
-    }
+    Person p (10, "John");
+    Person copy = p;
 
-    // сбросили указатель на начало
-    fileReader.reset();
+    PersonMem personMem(10);
+    log(personMem);
+    log(personMem);
+    cout << personMem.getAge() << endl;
 
-    // еще раз считали
-    while (fileReader.hasNext()) {
-        string str = fileReader.next();
-    }
+    // ошибка
+    // Singleton singleton = new Singleton();
 
-    // закрыли
-    fileReader.close();
-    return 0;
+    Singleton *instance1 = Singleton::getInstance();
+    instance1->setValue(10);
+
+    Singleton *instance2 = Singleton::getInstance();
+    cout << instance2->getValue() << endl;
 }
