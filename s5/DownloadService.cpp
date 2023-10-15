@@ -3,24 +3,19 @@
 //
 
 #include "DownloadService.h"
-
+#include "sstream"
 string DownloadService::download(string url) {
     if (url.empty()) {
         throw "error";
     }
 
-    try {
-        string result = internalDownload(url);
-    } catch (string error)
-    {
-
-    } catch (int i)
-    {
-
+    string* data = cacheService.get(url);
+    if (!data) {
+        return *data;
     }
 
     // реальное скачивание здесь
-
+    internalDownload(url);
 
     return "link-to-file";
 }

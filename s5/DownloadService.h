@@ -5,16 +5,19 @@
 #ifndef GOOGLE_TESTS_DOWNLOADSERVICE_H
 #define GOOGLE_TESTS_DOWNLOADSERVICE_H
 #include "string"
+#include "CacheService.h"
 
 using std::string;
 
 class DownloadService {
+private:
+    CacheService cacheService;
+    string internalDownload(string url);
 public:
-    // возвращает путь до файла
+    // возвращает ресурс в виде строки
     string download(string url);
 
-private:
-    string internalDownload(string url);
+    DownloadService(CacheService cacheService);
 };
 
 

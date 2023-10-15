@@ -16,7 +16,12 @@ add_executable(Google_Tests_run s4/SplitServiceTest.cpp
         ../s4/Vector.cpp
         ../s4/Vector.h
         s4/VectorTest.cpp
-        ../s4/DownloadService.cpp
-        ../s4/DownloadService.h)
+        ../s5/DownloadService.cpp
+        ../s5/DownloadService.h
+        ../s5/CacheService.cpp
+        ../s5/CacheService.h
+        s5/DownloadServiceTest.cpp
+        ../s5/BitArray.cpp
+        ../s5/BitArray.h)
 
 target_link_libraries(Google_Tests_run gtest gtest_main)
