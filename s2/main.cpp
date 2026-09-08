@@ -1,6 +1,6 @@
 #include <iostream>
-#include "s2/Mobile.h"
-#include "s2/FileReader.h"
+#include "Mobile.h"
+#include "FileReader.h"
 
 int main() {
     // создаем объект класса
