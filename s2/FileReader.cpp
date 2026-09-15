@@ -4,7 +4,7 @@
 
 #include "FileReader.h"
 
-FileReader::FileReader(string filename) {
+FileReader::FileReader(string filePath) {
 
 }
 

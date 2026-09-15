@@ -10,27 +10,46 @@
 
 using std::string;
 using std::ifstream;
-// Чтение файла построчно
+/**
+ * Компонент для построчного чтения файла.
+ */
 class FileReader {
 private:
     string filename;
     ifstream* f;
 public:
-    FileReader(string filename);
 
-    // открыть файл
+    /**
+     * Конструктор
+     * @param filePath путь до файла
+     */
+    FileReader(string filePath);
+
+    /**
+     * Открыть файл на чтение.
+     */
     void open();
 
-    // дай след. строчку
+    /**
+     * Прочитать следующую строчку
+     * @return следуюзщая строчка из файла
+     */
     string next();
 
-    // есть ли еще данные для считывания
+    /**
+     * Проверяет указывает ли каретка на последнюю строчку в файле.
+     * @return <code>true</code> если есть строчка для чтения, <code>false</code> иначе
+     */
     bool hasNext();
 
-    // закрыть файл
+    /**
+     * Закрывает файл.
+     */
     void close();
 
-    // вернуть в начало
+    /**
+     * Вернуть каретку на начало файла.
+     */
     void reset();
 
 

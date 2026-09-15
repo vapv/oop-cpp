@@ -19,7 +19,6 @@ enum OperationSystem {
 
 class Mobile {
 
-
 private:
     string vendor;
     OperationSystem operationSystem;
@@ -27,53 +26,42 @@ private:
     static const int CHARGE_FOR_CALL = 15;
 
 public:
-    Mobile(string vendor, OperationSystem os) : vendor(vendor), operationSystem(operationSystem) {
+    /**
+     * Конструктор
+     * @param vendor - марка мобильного телефона
+     * @param os - операционная система
+     */
+    Mobile(string vendor, OperationSystem os);;
 
-        // this->operationSystem = operationSystem;
+    /**
+     * Деструктор
+     */
+    ~Mobile();
 
-        cout << "Конструктор Mobile(os, vendor). " << toString() << std::endl;
-        chargeLevel = 100;
-    };
+    /**
+     * Представление объекта в виде строки
+     * @return
+     */
+    string toString() const;
 
-    ~Mobile() {
-        cout << "Деструктор ~Mobile(). " << toString() << std::endl;
-    }
+    /**
+     * Получить текущий уровень зарядки
+     * @return уровень зарядки
+     */
+    int getChargeLevel() const;
 
-    string toString() {
-        return "vendor = " + vendor + ", os = " + ( operationSystem == IOS ? "IOS" :
-                                                    (operationSystem == ANDROID ? "ANDROID" : "HUAWEI"));
-    }
+    /**
+     * Зарядить телефон до полного заряда.
+     */
+    void charge();
 
-    int getChargeLevel() const {
-        return chargeLevel;
-    }
+    /**
+     * Совершить звонок по номеру.
+     * @param number
+     */
+    void call(string number);
 
-    void charge() {
-        cout << "Зарядка телефона.." << std::endl;
-        // timeout по времени
-        this->chargeLevel = 100;
-    }
-//
-    void call();
-
+    friend std::ostream& operator<<(std::ostream& ostream, const Mobile& mobile);
 };
-
-
-
-
-/**
-// пример кода запуска
-Mobile samsung("samsung", ANDROID);
-for (int i = 0; i < 10; i++) {
-    try {
-        samsung.call();
-    } catch (string s) {
-        cout << "Ошибка: " << s << std::endl;
-        samsung.charge();
-        continue;
-    }
-}
- */
-
 
 #endif //OOP_CPP_MOBILE_H
