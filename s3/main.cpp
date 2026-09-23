@@ -4,7 +4,8 @@
 int Person::counter = 0;
 
 int main() {
-    // создаем объект класса
-    Person person(10);
-    return 0;
+    Person p1("abc", 10);
+    Person p2("abc", 10);
+
+    cout << p1.compare(&p2) << endl;
 }

@@ -15,56 +15,35 @@ class Person {
 private:
     int age;
     string name;
+
     static int counter;
 
 public:
-    Person (int age) : age(age) {
-        cout << "Person (int age):  " << age << endl;
-        counter++;
-    }
+    Person (int age);
 
-    Person (int age, string name) : age(age), name(name) {
-        cout << "Person (int age, string name):  " << age << endl;
-    }
+    Person(string name, int age);
 
-    Person(const Person& p) {
-        cout << "Person(const Person& p) : copy constructor" << endl;
-        this->age = p.age;
-        this->name = p.name;
-    }
+    Person(const Person& p);
 
-    ~Person() {
-        cout << "~Person ():  " << endl;
-    }
+    ~Person();
 
     static int getCount() {
         return counter;
     }
 
+    Person& operator=(Person& person);
 
-    Person& operator=(Person& person) {
-        std::cout << "Person.operator=(Person&) :" << endl;
-        this->age = person.age;
-        return *this;
-    }
+    bool compare (Person *p);
 
-    bool compare (Person p) {
-        if (age != p.age) {
-            return false;
-        }
+    void setAge(int age);
 
-        if (name != p.name) {
-            return false;
-        }
+    void setName(const string &name);
 
-        return true;
-    }
-/**
-Person (int age) {
- this->age = age;
-}
+    int getAge() const;
 
-**/
+    const string &getName() const;
+
+    friend std::ostream& operator<<(std::ostream& ostream, const Person& mobile);
 };
 
 
